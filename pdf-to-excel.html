@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to convert PDF files to Excel spreadsheets. Easily extract tables and data from PDF to editable XLSX format.">
+    <meta name="keywords" content="PDF to Excel, PDF converter, Excel converter, PDF to XLSX, online PDF tool, extract PDF data">
+    <meta name="author" content="PDFExcelTools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="PDF to Excel Converter | Free Online Tool">
+    <meta property="og:description" content="Convert your PDF files to Excel spreadsheets quickly and easily with our free online tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.pdfexcelconverter.com">
+    
+    <title>PDF to Excel Converter | Free Online Conversion Tool</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.pdfexcelconverter.com">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+    
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-color: #f8f9fa;
+            --dark-color: #202124;
+            --gray-color: #5f6368;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--gray-color);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--gray-color);
+            cursor: pointer;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .converter-section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            margin: -50px auto 40px;
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .converter-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .drop-area {
+            border: 2px dashed var(--gray-color);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 20px;
+        }
+        
+        .drop-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(66, 133, 244, 0.05);
+        }
+        
+        .drop-area.active {
+            border-color: var(--secondary-color);
+            background-color: rgba(52, 168, 83, 0.05);
+        }
+        
+        .drop-area i {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn:hover {
+            background-color: #3367d6;
+            transform: translateY(-2px);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        .btn-secondary {
+            background-color: var(--gray-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #4d5156;
+        }
+        
+        .options-section {
+            width: 100%;
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .options-section h3 {
+            margin-bottom: 15px;
+            color: var(--gray-color);
+        }
+        
+        .option-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .option-item {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .option-item label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .option-item select, .option-item input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+        }
+        
+        .progress-container {
+            width: 100%;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: var(--secondary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .status-text {
+            font-size: 14px;
+            color: var(--gray-color);
+            text-align: center;
+        }
+        
+        .result-section {
+            width: 100%;
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .download-btn {
+            background-color: var(--secondary-color);
+            margin-top: 20px;
+        }
+        
+        .download-btn:hover {
+            background-color: #2d9246;
+        }
+        
+        .features-section {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .feature-card i {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .ad-section {
+            padding: 20px 0;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        
+        .ad-container {
+            max-width: 728px;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: white;
+            border-radius: var(--border-radius);
+        }
+        
+        .how-it-works {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .steps-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .step-content h3 {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .step-content p {
+            color: var(--gray-color);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc1c6;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc1c6;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 15px 0;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: var(--box-shadow);
+                padding: 20px;
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 99;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0 0 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .converter-section {
+                padding: 20px;
+                margin: -30px auto 30px;
+            }
+            
+            .drop-area {
+                padding: 30px 20px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .option-group {
+                flex-direction: column;
+            }
+            
+            .option-item {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <img src="logo.png" alt="PDF to Excel Converter">
+                    <span class="logo-text">PDF2Excel</span>
+                </a>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Convert PDF to Excel in Seconds</h1>
+            <p>Extract tables and data from PDF files to editable Excel spreadsheets with our free online tool. No installation required.</p>
+        </div>
+    </section>
+    
+    <!-- Converter Section -->
+    <section class="converter-section">
+        <div class="converter-container">
+            <div class="drop-area" id="dropArea">
+                <i class="fas fa-file-pdf"></i>
+                <h3>Drag & Drop Your PDF File Here</h3>
+                <p>or</p>
+                <input type="file" id="fileInput" class="file-input" accept=".pdf">
+                <button class="btn" id="selectFileBtn"><i class="fas fa-folder-open"></i> Select PDF File</button>
+            </div>
+            
+            <div class="options-section" id="optionsSection">
+                <h3>Conversion Options</h3>
+                
+                <div class="option-group">
+                    <div class="option-item">
+                        <label for="outputFormat">Output Format</label>
+                        <select id="outputFormat">
+                            <option value="xlsx">Excel Workbook (.xlsx)</option>
+                            <option value="csv">CSV (.csv)</option>
+                            <option value="ods">OpenDocument Spreadsheet (.ods)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-item">
+                        <label for="pageRange">Page Range</label>
+                        <input type="text" id="pageRange" placeholder="e.g. 1-3,5 (leave blank for all pages)">
+                    </div>
+                </div>
+                
+                <div class="option-group">
+                    <div class="option-item">
+                        <label for="tableDetection">Table Detection</label>
+                        <select id="tableDetection">
+                            <option value="auto">Automatic (Recommended)</option>
+                            <option value="manual">Manual Selection</option>
+                            <option value="none">No Tables (Text Only)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-item">
+                        <label for="imageHandling">Image Handling</label>
+                        <select id="imageHandling">
+                            <option value="ignore">Ignore Images</option>
+                            <option value="embed">Embed in Excel</option>
+                            <option value="link">Save as Separate Files</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button class="btn" id="convertBtn"><i class="fas fa-exchange-alt"></i> Convert to Excel</button>
+            </div>
+            
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar">
+                    <div class="progress" id="progressBar"></div>
+                </div>
+                <p class="status-text" id="statusText">Preparing conversion...</p>
+            </div>
+            
+            <div class="result-section" id="resultSection">
+                <h3>Conversion Complete!</h3>
+                <p>Your Excel file is ready to download.</p>
+                <button class="btn download-btn" id="downloadBtn"><i class="fas fa-file-excel"></i> Download Excel File</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Ad Section -->
+    <section class="ad-section">
+        <div class="container">
+            <div class="ad-container">
+                <!-- Replace with your Google AdSense ad unit -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Powerful PDF to Excel Conversion</h2>
+                <p>Our tool offers advanced features to ensure accurate and efficient conversion of your PDF documents to Excel format.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-table"></i>
+                    <h3>Table Detection</h3>
+                    <p>Automatically detects and extracts tables from your PDF files with high accuracy.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-file-excel"></i>
+                    <h3>Multiple Formats</h3>
+                    <p>Convert to XLSX, CSV or ODS formats depending on your needs.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Secure Processing</h3>
+                    <p>Your files are processed securely and deleted automatically after conversion.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Friendly</h3>
+                    <p>Works perfectly on all devices including smartphones and tablets.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Conversion</h3>
+                    <p>Optimized algorithms ensure quick processing even for large files.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-language"></i>
+                    <h3>Multi-language</h3>
+                    <p>Supports PDFs in various languages including non-Latin scripts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Ad Section -->
+    <section class="ad-section">
+        <div class="container">
+            <div class="ad-container">
+                <!-- Replace with your Google AdSense ad unit -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How to Convert PDF to Excel</h2>
+                <p>Follow these simple steps to convert your PDF documents to Excel format.</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Upload Your PDF</h3>
+                        <p>Drag and drop your PDF file into the designated area or click to browse your files.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Set Conversion Options</h3>
+                        <p>Choose your preferred output format and adjust any additional settings if needed.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Start Conversion</h3>
+                        <p>Click the convert button and wait a few seconds while we process your file.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Download Excel File</h3>
+                        <p>Once conversion is complete, download your Excel file to your device.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="features-section" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our PDF to Excel conversion tool.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>Is this service free?</h3>
+                    <p>Yes, our PDF to Excel converter is completely free to use with no hidden charges.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Is my data secure?</h3>
+                    <p>Absolutely. Your files are processed securely and automatically deleted after conversion.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>What PDF formats are supported?</h3>
+                    <p>We support all standard PDF formats including scanned documents (OCR).</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-file-excel"></i>
+                    <h3>What Excel versions are supported?</h3>
+                    <p>The output works with Excel 2007 and later, including Office 365.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-file-upload"></i>
+                    <h3>Is there a file size limit?</h3>
+                    <p>Yes, the maximum file size is 50MB for free users.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-table"></i>
+                    <h3>How accurate is table detection?</h3>
+                    <p>Our advanced algorithms achieve over 95% accuracy in table detection and extraction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="how-it-works" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Have questions or feedback? We'd love to hear from you.</p>
+            </div>
+            
+            <div class="converter-section" style="max-width: 600px;">
+                <form id="contactForm">
+                    <div class="option-item" style="margin-bottom: 20px;">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" required>
+                    </div>
+                    
+                    <div class="option-item" style="margin-bottom: 20px;">
+                        <label for="contactEmail">Email Address</label>
+                        <input type="email" id="contactEmail" required>
+                    </div>
+                    
+                    <div class="option-item" style="margin-bottom: 20px;">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" rows="5" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: var(--border-radius); font-family: inherit;"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PDF2Excel</h3>
+                    <p>The fastest and most accurate PDF to Excel conversion tool online.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 PDF2Excel Converter. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (this.getAttribute('href') === '#') return;
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // File upload functionality
+        const dropArea = document.getElementById('dropArea');
+        const fileInput = document.getElementById('fileInput');
+        const selectFileBtn = document.getElementById('selectFileBtn');
+        const optionsSection = document.getElementById('optionsSection');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressBar = document.getElementById('progressBar');
+        const statusText = document.getElementById('statusText');
+        const resultSection = document.getElementById('resultSection');
+        const convertBtn = document.getElementById('convertBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        
+        // Prevent default drag behaviors
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        // Highlight drop area when item is dragged over it
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+        
+        function highlight() {
+            dropArea.classList.add('active');
+        }
+        
+        function unhighlight() {
+            dropArea.classList.remove('active');
+        }
+        
+        // Handle dropped files
+        dropArea.addEventListener('drop', handleDrop, false);
+        
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+        
+        // Handle selected files
+        selectFileBtn.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        fileInput.addEventListener('change', () => {
+            handleFiles(fileInput.files);
+        });
+        
+        function handleFiles(files) {
+            if (files.length === 0) return;
+            
+            const file = files[0];
+            if (file.type !== 'application/pdf') {
+                alert('Please select a PDF file.');
+                return;
+            }
+            
+            // Display file name
+            dropArea.innerHTML = `
+                <i class="fas fa-file-pdf"></i>
+                <h3>${file.name}</h3>
+                <p>${formatFileSize(file.size)}</p>
+                <button class="btn btn-secondary" id="changeFileBtn"><i class="fas fa-exchange-alt"></i> Change File</button>
+            `;
+            
+            // Show options section
+            optionsSection.style.display = 'block';
+            
+            // Add event listener to change file button
+            document.getElementById('changeFileBtn').addEventListener('click', resetConverter);
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        // Convert button click handler
+        convertBtn.addEventListener('click', () => {
+            // Simulate conversion process
+            optionsSection.style.display = 'none';
+            progressContainer.style.display = 'block';
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 10;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    conversionComplete();
+                }
+                progressBar.style.width = progress + '%';
+                statusText.textContent = getStatusMessage(progress);
+            }, 300);
+        });
+        
+        function getStatusMessage(progress) {
+            if (progress < 20) return 'Analyzing PDF structure...';
+            if (progress < 40) return 'Detecting tables and text...';
+            if (progress < 60) return 'Processing page content...';
+            if (progress < 80) return 'Formatting Excel data...';
+            return 'Finalizing conversion...';
+        }
+        
+        function conversionComplete() {
+            progressContainer.style.display = 'none';
+            resultSection.style.display = 'block';
+            
+            // Scroll to result
+            setTimeout(() => {
+                resultSection.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        }
+        
+        // Download button click handler
+        downloadBtn.addEventListener('click', () => {
+            // In a real implementation, this would download the actual converted file
+            alert('In a real implementation, this would download the converted Excel file. This is a frontend demo.');
+            
+            // Reset after download
+            setTimeout(resetConverter, 1000);
+        });
+        
+        // Reset converter to initial state
+        function resetConverter() {
+            dropArea.innerHTML = `
+                <i class="fas fa-file-pdf"></i>
+                <h3>Drag & Drop Your PDF File Here</h3>
+                <p>or</p>
+                <input type="file" id="fileInput" class="file-input" accept=".pdf">
+                <button class="btn" id="selectFileBtn"><i class="fas fa-folder-open"></i> Select PDF File</button>
+            `;
+            
+            // Re-initialize event listeners
+            fileInput.value = '';
+            document.getElementById('selectFileBtn').addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            fileInput.addEventListener('change', () => {
+                handleFiles(fileInput.files);
+            });
+            
+            optionsSection.style.display = 'none';
+            progressContainer.style.display = 'none';
+            resultSection.style.display = 'none';
+            progressBar.style.width = '0%';
+        }
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const message = document.getElementById('contactMessage').value;
+            
+            // In a real implementation, you would send this data to your server
+            console.log('Form submitted:', { name, email, message });
+            
+            // Show success message
+            alert('Thank you for your message! We will get back to you soon.');
+            
+            // Reset form
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
